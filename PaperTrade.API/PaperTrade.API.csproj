@@ -14,4 +14,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PaperTrade.BusinessLogic\PaperTrade.BusinessLogic.csproj" />
+    <ProjectReference Include="..\PaperTrade.Common\PaperTrade.Common.csproj" />
+  </ItemGroup>
+
 </Project>

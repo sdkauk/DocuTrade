@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PaperTrade.Common\PaperTrade.Common.csproj" />
+    <ProjectReference Include="..\PaperTrade.DataAccess\PaperTrade.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>
