@@ -20,7 +20,6 @@ namespace PaperTrade.Common.Models
         public List<BasicBrief> AuthoredBriefs { get; set; }
         public List<BasicBrief> OwnedBriefs { get; set; }
         public long Upvotes { get; set; }
-        public List<BasicBrief> UpvotedBriefs { get; set; }
         public List<BasicTrade> Trades { get; set; }
     }
 }
