@@ -3,7 +3,7 @@ using PaperTrade.Common.Models;
 
 namespace PaperTrade.DataAccess.Repositories
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly IMongoCollection<User> users;
         public UserRepository(IDbConnection db)
@@ -29,6 +29,16 @@ namespace PaperTrade.DataAccess.Repositories
             return results.FirstOrDefault();
         }
 
+        public Task CreateUser(User user)
+        {
+            return users.InsertOneAsync(user);
+        }
+
+        public Task UpdateUser(User user)
+        {
+            var filter = Builders<User>.Filter.Eq("Id", user.Id);
+            return users.ReplaceOneAsync(filter, user, new ReplaceOptions { IsUpsert = true });
+        }
 
     }
 }
