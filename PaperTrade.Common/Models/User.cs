@@ -18,8 +18,7 @@ namespace PaperTrade.Common.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string DisplayName { get; set; }
-        public List<BasicBrief> AuthoredBriefs { get; set; }
-        public List<BasicBrief> OwnedBriefs { get; set; }
+        public List<Guid> OwnedBriefs { get; set; }
         public long Upvotes { get; set; }
         public List<BasicTrade> Trades { get; set; }
     }

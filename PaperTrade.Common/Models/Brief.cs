@@ -17,6 +17,7 @@ namespace PaperTrade.Common.Models
         public Document Document { get; set; }
         public Image Preview { get; set; }
         public BasicUser Author { get; set; }
+        public List<Guid> Owners { get; set; }
         public string Description { get; set; }
         public long Upvotes { get; set; }
         public List<User> UserUpvotes { get; set; }

@@ -29,15 +29,15 @@ namespace PaperTrade.DataAccess.Repositories
             return results.FirstOrDefault();
         }
 
-        public Task CreateUser(User user)
+        public async Task CreateUserAsync(User user)
         {
-            return users.InsertOneAsync(user);
+            await users.InsertOneAsync(user);
         }
 
-        public Task UpdateUser(User user)
+        public async Task UpdateUserAsync(User user)
         {
             var filter = Builders<User>.Filter.Eq("Id", user.Id);
-            return users.ReplaceOneAsync(filter, user, new ReplaceOptions { IsUpsert = true });
+            await users.ReplaceOneAsync(filter, user, new ReplaceOptions { IsUpsert = true });
         }
 
     }

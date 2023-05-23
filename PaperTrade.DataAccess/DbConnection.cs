@@ -16,6 +16,7 @@ namespace PaperTrade.DataAccess
         public string TradeStatusCollectionName { get; private set; } = "tradestatuses";
         public string DocumentCollectionName { get; private set; } = "documents";
         public string ImageCollectionName { get; private set; } = "images";
+        public string UserBriefCollectionName { get; private set; } = "userbriefs";
 
         public MongoClient Client { get; private set; }
         public IMongoCollection<Brief> BriefCollection { get; private set; }
@@ -24,6 +25,7 @@ namespace PaperTrade.DataAccess
         public IMongoCollection<TradeStatus> TradeStatusCollection { get; private set; }
         public IMongoCollection<Document> DocumentCollection { get; private set; }
         public IMongoCollection<Image> ImageCollection { get; private set; }
+        public IMongoCollection<UserBrief> UserBriefCollection { get; private set;} 
 
         public DbConnection(IConfiguration configuration)
         {
@@ -38,6 +40,7 @@ namespace PaperTrade.DataAccess
             TradeStatusCollection = db.GetCollection<TradeStatus>(TradeStatusCollectionName);
             DocumentCollection = db.GetCollection<Document>(DocumentCollectionName);
             ImageCollection = db.GetCollection<Image>(ImageCollectionName);
+            UserBriefCollection = db.GetCollection<UserBrief>(UserBriefCollectionName);
         }
 
     }
