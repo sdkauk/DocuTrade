@@ -11,7 +11,7 @@ namespace PaperTrade.DataAccess.Repositories
             users = db.UserCollection;
         }
 
-        public async Task<List<User>> GetUsersAsync()
+        public async Task<List<User>> GetAllUsersAsync()
         {
             var results = await users.FindAsync(_ => true);
             return results.ToList();

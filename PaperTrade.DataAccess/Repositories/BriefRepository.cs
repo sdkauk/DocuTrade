@@ -3,7 +3,7 @@ using PaperTrade.Common.Models;
 
 namespace PaperTrade.DataAccess.Repositories
 {
-    public class BriefRepository
+    public class BriefRepository : IBriefRepository
     {
         private readonly IMongoCollection<Brief> briefs;
         public BriefRepository(IDbConnection db)
@@ -11,7 +11,7 @@ namespace PaperTrade.DataAccess.Repositories
             briefs = db.BriefCollection;
         }
 
-        public async Task<List<Brief>> GetBriefsAsync()
+        public async Task<List<Brief>> GetAllBriefsAsync()
         {
             var results = await briefs.FindAsync(_ => true);
             return results.ToList();
@@ -23,12 +23,22 @@ namespace PaperTrade.DataAccess.Repositories
             return results.FirstOrDefault();
         }
 
-        public async Task<List<Brief>> GetBriefsByUser(Guid userId)
+        public async Task<List<Brief>> GetBriefsByAuthor(Guid userId)
         {
             var results = await briefs.FindAsync(b => b.Author.Id == userId);
             return results.ToList();
         }
 
+        public async Task CreateBriefAsync(Brief brief)
+        {
+            await briefs.InsertOneAsync(brief);
+        }
+
+        public async Task UpdateBriefAsync(Brief brief)
+        {
+            var filter = Builders<Brief>.Filter.Eq("Id", brief.Id);
+            await briefs.ReplaceOneAsync(filter, brief, new ReplaceOptions { IsUpsert = true });
+        }
 
     }
 }
