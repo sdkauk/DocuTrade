@@ -43,4 +43,4 @@ namespace PaperTrade.DataAccess.Repositories
         }
     }
 }
-}
+

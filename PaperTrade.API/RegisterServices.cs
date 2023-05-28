@@ -1,4 +1,6 @@
 ﻿using PaperTrade.DataAccess;
+using PaperTrade.DataAccess.DataSeeder;
+using PaperTrade.DataAccess.Repositories;
 
 namespace PaperTrade.API
 {
@@ -12,7 +14,9 @@ namespace PaperTrade.API
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddSingleton<IDbConnection, DbConnection>();
+            builder.Services.AddScoped<ITradeStatusRepository, TradeStatusRepository>();
+            builder.Services.AddTransient<TradeStatusSeeder>();
+            builder.Services.AddTransient<DataSeeder>();
         }
-
     }
 }
