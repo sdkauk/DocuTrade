@@ -12,6 +12,12 @@ namespace PaperTrade.DataAccess.Repositories
             documents = db.DocumentCollection;
         }
 
+        public async Task<List<Document>> GetAllDocumentsAsync()
+        {
+            var results = await documents.FindAsync(_ => true);
+            return results.ToList();
+        }
+
         public async Task<Document> GetDocumentAsync(Guid id)
         {
             var results = await documents.FindAsync(d => d.Id == id);

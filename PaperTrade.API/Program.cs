@@ -23,11 +23,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 
     // Seed additional development data
-    using (var scope = app.Services.CreateScope())
-    {
-        var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
-        seeder.SeedDevelopmentData().Wait();
-    }
+    using var scope = app.Services.CreateScope();
+    var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
+    seeder.SeedDevelopmentData().Wait();
 }
 
 app.UseHttpsRedirection();

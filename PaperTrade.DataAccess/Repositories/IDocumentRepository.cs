@@ -6,6 +6,7 @@ namespace PaperTrade.DataAccess.Repositories
     {
         Task CreateDocumentAsync(Document document);
         Task DeleteDocumentAsync(Guid id);
+        Task<List<Document>> GetAllDocumentsAsync();
         Task<Document> GetDocumentAsync(Guid id);
         Task UpdateDocumentAsync(Document document);
     }
