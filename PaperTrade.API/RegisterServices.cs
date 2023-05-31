@@ -15,6 +15,8 @@ namespace PaperTrade.API
 
             builder.Services.AddSingleton<IDbConnection, DbConnection>();
 
+            builder.Services.AddSingleton<IBlobStorageService>(new BlobStorageService(builder.Configuration.GetConnectionString("BlobStorage")));
+
             builder.Services.AddScoped<ITradeStatusRepository, TradeStatusRepository>();
             builder.Services.AddScoped<IImageRepository, ImageRepository>();
             builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();

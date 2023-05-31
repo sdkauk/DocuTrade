@@ -7,11 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PaperTrade.Common\PaperTrade.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DataSeeder\SeedData\" />
   </ItemGroup>
 
 </Project>
