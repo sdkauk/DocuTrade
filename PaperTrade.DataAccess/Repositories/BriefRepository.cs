@@ -40,5 +40,11 @@ namespace PaperTrade.DataAccess.Repositories
             await briefs.ReplaceOneAsync(filter, brief, new ReplaceOptions { IsUpsert = true });
         }
 
+        public async Task DeleteBriefAsync(Guid id)
+        {
+            var filter = Builders<Brief>.Filter.Eq("Id", id);
+            await briefs.DeleteOneAsync(filter);
+        }
+
     }
 }
