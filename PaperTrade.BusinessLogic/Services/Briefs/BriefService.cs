@@ -28,7 +28,7 @@ namespace PaperTrade.API.Services
             return await briefRepository.GetBriefsByAuthor(userId);
         }
 
-        public async Task<Brief> CreateBriefAsync(PostRequest request)
+        public async Task<Brief> CreateBriefAsync(BriefPostRequest request)
         {
             brief.Id = Guid.NewGuid();
             await briefRepository.CreateBriefAsync(brief);
