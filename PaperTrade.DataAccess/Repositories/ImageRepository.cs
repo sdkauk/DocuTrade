@@ -18,7 +18,7 @@ namespace PaperTrade.DataAccess.Repositories
             return results.ToList();
         }
 
-        public async Task<Image> GetImageByIdAsync(Guid id)
+        public async Task<Image> GetImageAsync(Guid id)
         {
             var results = await images.FindAsync(i => i.Id == id);
             return results.FirstOrDefault();

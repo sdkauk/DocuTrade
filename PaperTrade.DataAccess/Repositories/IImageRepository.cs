@@ -7,7 +7,7 @@ namespace PaperTrade.DataAccess.Repositories
         Task CreateImageAsync(Image image);
         Task DeleteImageAsync(Guid id);
         Task<List<Image>> GetAllImagesAsync();
-        Task<Image> GetImageByIdAsync(Guid id);
+        Task<Image> GetImageAsync(Guid id);
         Task UpdateImageAsync(Image image);
     }
 }

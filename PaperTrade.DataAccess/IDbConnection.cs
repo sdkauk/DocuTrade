@@ -19,7 +19,5 @@ namespace PaperTrade.DataAccess
         string TradeStatusCollectionName { get; }
         IMongoCollection<User> UserCollection { get; }
         string UserCollectionName { get; }
-        IMongoCollection<UserBrief> UserBriefCollection { get; }
-        string UserBriefCollectionName { get; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using PaperTrade.DataAccess;
+﻿using PaperTrade.BusinessLogic.Services;
+using PaperTrade.DataAccess;
 using PaperTrade.DataAccess.DataSeeder;
 using PaperTrade.DataAccess.Repositories;
 
@@ -30,6 +31,10 @@ namespace PaperTrade.API
             builder.Services.AddTransient<BriefSeeder>();
 
             builder.Services.AddTransient<DataSeeder>();
+
+            builder.Services.AddScoped<IBriefService, BriefService>();
+
+            builder.Services.AddControllers();
         }
     }
 }
