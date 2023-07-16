@@ -10,9 +10,6 @@ namespace PaperTrade.API.Controllers
     public class BriefController : ControllerBase
     {
         private readonly IBriefService briefService;
-/*        private readonly IDocumentService documentService;
-        private readonly IUserService userService;
-        private readonly IImageService documentService;*/
 
         public BriefController(IBriefService briefService)
         {

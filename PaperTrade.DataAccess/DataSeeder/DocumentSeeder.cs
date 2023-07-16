@@ -17,9 +17,9 @@ public class DocumentSeeder
     {
         var documents = new List<Document>
         {
-            new Document { Id = Guid.NewGuid()},
-            new Document { Id = Guid.NewGuid()},
-            new Document { Id = Guid.NewGuid()},
+            new Document { Id = Guid.NewGuid(), Extension = ".txt"},
+            new Document { Id = Guid.NewGuid(), Extension = ".txt"},
+            new Document { Id = Guid.NewGuid(), Extension = ".txt"},
         };
 
         var existingDocuments = await documentRepository.GetAllDocumentsAsync();
@@ -28,7 +28,7 @@ public class DocumentSeeder
         {
             if (!existingDocuments.Any())
             {
-                var fileName = document.Id.ToString() + ".txt";
+                var fileName = document.Id.ToString() + document.Extension;
                 await using var fileStream = File.Create(fileName);
                 var writer = new StreamWriter(fileStream);
                 await writer.WriteAsync($"This is the content of {fileName}");
