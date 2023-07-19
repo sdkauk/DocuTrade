@@ -1,10 +1,11 @@
 ﻿using PaperTrade.DataAccess.Repositories;
 using PaperTrade.DataAccess;
 using PaperTrade.Common.Models;
+using PaperTrade.BusinessLogic.Services.Documents.Requests;
 
 namespace PaperTrade.BusinessLogic.Services
 {
-    public class DocumentService
+    public class DocumentService : IDocumentService
     {
         private readonly IDocumentRepository documentRepository;
         private readonly IBlobStorageService blobStorageService;
@@ -23,13 +24,26 @@ namespace PaperTrade.BusinessLogic.Services
         {
             return await documentRepository.GetDocumentAsync(id);
         }
-
-        public async Task<Document> CreateDocumentAsync(Stream content, string extension)
+        public async Task<Stream> DownloadDocumentAsync(string documentName)
         {
+            return await blobStorageService.DownloadBlobAsync("documentcontainer", documentName);
+        }
+        public async Task<Document> CreateDocumentAsync(DocumentPostRequest request)
+        {
+            if (request.File == null || request.File.Length == 0)
+                throw new Exception("File is null or empty");
+
+            var extension = Path.GetExtension(request.File.FileName);
             var document = new Document { Id = Guid.NewGuid(), Extension = extension};
             var fileName = document.Id.ToString() + document.Extension;
 
-            await blobStorageService.UploadBlobAsync("documentcontainer", fileName, content);
+            using (var stream = new MemoryStream())
+            {
+                await request.File.CopyToAsync(stream);
+                stream.Position = 0;
+                await blobStorageService.UploadBlobAsync("documentcontainer", fileName, stream);
+            }
+
             await documentRepository.CreateDocumentAsync(document);
 
             return document;

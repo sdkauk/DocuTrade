@@ -33,6 +33,7 @@ namespace PaperTrade.API
             builder.Services.AddTransient<DataSeeder>();
 
             builder.Services.AddScoped<IBriefService, BriefService>();
+            builder.Services.AddScoped<IDocumentService, DocumentService>();
 
             builder.Services.AddControllers();
         }
