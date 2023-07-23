@@ -17,9 +17,9 @@ public class ImageSeeder
     {
         var images = new List<Image>
         {
-            new Image { Id = Guid.NewGuid()},
-            new Image { Id = Guid.NewGuid()},
-            new Image { Id = Guid.NewGuid()},
+            new Image { Id = Guid.NewGuid(), Extension = ".png"},
+            new Image { Id = Guid.NewGuid(), Extension = ".png"},
+            new Image { Id = Guid.NewGuid(), Extension = ".png"},
         };
 
         var existingImages = await imageRepository.GetAllImagesAsync();
@@ -29,7 +29,7 @@ public class ImageSeeder
             // Check if the iamge already exists
             if (!existingImages.Any())
             {
-                var fileName = image.Id.ToString() + ".png";
+                var fileName = image.Id.ToString() + image.Extension;
                 var filePath = "ImageSeed.png";
                 await using var fileStream = File.OpenRead(filePath);
                 await blobStorageService.UploadBlobAsync("imagecontainer", fileName, fileStream);

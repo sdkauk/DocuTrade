@@ -2,7 +2,6 @@
 using PaperTrade.BusinessLogic.Services;
 using PaperTrade.BusinessLogic.Services.Documents.Requests;
 using PaperTrade.Common.Models;
-using System.IO;
 
 namespace PaperTrade.API.Controllers
 {

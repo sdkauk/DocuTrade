@@ -10,7 +10,6 @@ namespace PaperTrade.API
         public static void ConfigureServices(this WebApplicationBuilder builder)
         {
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -34,6 +33,7 @@ namespace PaperTrade.API
 
             builder.Services.AddScoped<IBriefService, BriefService>();
             builder.Services.AddScoped<IDocumentService, DocumentService>();
+            builder.Services.AddScoped<IImageService, ImageService>();
 
             builder.Services.AddControllers();
         }
