@@ -15,7 +15,7 @@ namespace PaperTrade.Common.Models
 
         }
 
-        public BasicTrade(TradeStatus trade)
+        public BasicTrade(Trade trade)
         {
             Id = trade.Id;
             Name = trade.Name;

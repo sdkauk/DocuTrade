@@ -25,6 +25,12 @@ namespace PaperTrade.DataAccess.Repositories
             return results.FirstOrDefault();
         }
 
+        public async Task<TradeStatus> GetTradeStatusByNameAsync(TradeStatusName name)
+        {
+            var filter = Builders<TradeStatus>.Filter.Eq(t => t.Name, name);
+            return await tradeStatuses.Find(filter).FirstOrDefaultAsync();
+        }
+
         public async Task CreateTradeStatusAsync(TradeStatus tradeStatus)
         {
             await tradeStatuses.InsertOneAsync(tradeStatus);

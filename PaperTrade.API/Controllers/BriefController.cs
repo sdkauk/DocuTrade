@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PaperTrade.BusinessLogic.Services;
 using PaperTrade.BusinessLogic.Services.Briefs.Requests;
 using PaperTrade.Common.Models;
 
 namespace PaperTrade.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class BriefController : ControllerBase

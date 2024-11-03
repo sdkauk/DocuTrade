@@ -22,6 +22,7 @@ namespace PaperTrade.API
             builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IBriefRepository, BriefRepository>();
+            builder.Services.AddScoped<ITradeRepository, TradeRepository>();
 
             builder.Services.AddTransient<TradeStatusSeeder>();
             builder.Services.AddTransient<ImageSeeder>();
@@ -34,6 +35,7 @@ namespace PaperTrade.API
             builder.Services.AddScoped<IBriefService, BriefService>();
             builder.Services.AddScoped<IDocumentService, DocumentService>();
             builder.Services.AddScoped<IImageService, ImageService>();
+            builder.Services.AddScoped<ITradeService, TradeService>();
 
             builder.Services.AddControllers();
         }

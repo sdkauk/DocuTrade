@@ -8,6 +8,7 @@ namespace PaperTrade.DataAccess.Repositories
         Task DeleteTradeStatusAsync(Guid id);
         Task<List<TradeStatus>> GetAllTradeStatusesAsync();
         Task<TradeStatus> GetTradeStatusAsync(Guid id);
+        Task<TradeStatus> GetTradeStatusByNameAsync(TradeStatusName name);
         Task UpdateTradeStatusAsync(TradeStatus tradeStatus);
     }
 }

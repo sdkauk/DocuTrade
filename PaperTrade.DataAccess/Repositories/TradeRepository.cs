@@ -25,6 +25,17 @@ namespace PaperTrade.DataAccess.Repositories
             return results.FirstOrDefault();
         }
 
+        public async Task<List<Trade>> GetTradesByUserAsync(Guid userId)
+        {
+            var filter = Builders<Trade>.Filter.Or(
+                Builders<Trade>.Filter.Eq("Buyer.Id", userId),
+                Builders<Trade>.Filter.Eq("Seller.Id", userId)
+            );
+
+            var results = await trades.FindAsync(filter);
+            return results.ToList();
+        }
+
         public async Task CreateTradeAsync(Trade trade)
         {
             await trades.InsertOneAsync(trade);

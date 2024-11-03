@@ -8,7 +8,7 @@ namespace PaperTrade.Common.Models
         [BsonId]
         [BsonRepresentation(BsonType.String)]
         public Guid Id { get; set; }
-        public string Name { get; set; }
+        public TradeStatusName Name { get; set; }
         public string Description { get; set; }
     }
 }

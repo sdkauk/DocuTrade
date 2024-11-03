@@ -8,6 +8,7 @@ namespace PaperTrade.DataAccess.Repositories
         Task DeleteTradeAsync(Guid id);
         Task<List<Trade>> GetAllTradesAsync();
         Task<Trade> GetTradeAsync(Guid id);
+        Task<List<Trade>> GetTradesByUserAsync(Guid userId);
         Task UpdateTradeAsync(Trade trade);
     }
 }

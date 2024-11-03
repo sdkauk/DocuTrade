@@ -14,9 +14,9 @@ public class TradeStatusSeeder
     {
         var tradeStatuses = new List<TradeStatus>
         {
-            new TradeStatus { Id = Guid.NewGuid(), Name = "Accepted", Description = "Trade has been accepted." },
-            new TradeStatus { Id = Guid.NewGuid(), Name = "Declined", Description = "Trade has been declined." },
-            new TradeStatus { Id = Guid.NewGuid(), Name = "Pending", Description = "Trade is pending." },
+            new TradeStatus { Id = Guid.NewGuid(), Name = TradeStatusName.Accepted, Description = "Trade has been accepted." },
+            new TradeStatus { Id = Guid.NewGuid(), Name = TradeStatusName.Declined, Description = "Trade has been declined." },
+            new TradeStatus { Id = Guid.NewGuid(), Name = TradeStatusName.Pending, Description = "Trade is pending." },
         };
 
         var existingTradeStatuses = await _tradeStatusRepository.GetAllTradeStatusesAsync();
