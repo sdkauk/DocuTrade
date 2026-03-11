@@ -1,4 +1,5 @@
 ﻿using PaperTrade.BusinessLogic.Services;
+using PaperTrade.BusinessLogic.Services.Claims;
 using PaperTrade.DataAccess;
 using PaperTrade.DataAccess.DataSeeder;
 using PaperTrade.DataAccess.Repositories;
@@ -36,6 +37,8 @@ namespace PaperTrade.API
             builder.Services.AddScoped<IDocumentService, DocumentService>();
             builder.Services.AddScoped<IImageService, ImageService>();
             builder.Services.AddScoped<ITradeService, TradeService>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IClaimsService, ClaimsService>();
 
             builder.Services.AddControllers();
         }

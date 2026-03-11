@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 using PaperTrade.API;
+using PaperTrade.API.Extensions;
 using PaperTrade.DataAccess.DataSeeder;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,6 +39,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseUserSynchronization();
 
 app.MapControllers();
 
